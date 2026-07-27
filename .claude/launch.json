@@ -1,0 +1,65 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "zeit-praep",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4610",
+        "--directory",
+        "/Users/shyngysnarseyit/Desktop/Projects/istc"
+      ],
+      "port": 4610
+    },
+    {
+      "name": "istc-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4599",
+        "--directory",
+        "/private/tmp/claude-501/-Users-shyngysnarseyit-Desktop-Projects-istc/98b91961-189b-4178-95c7-2a11403407d3/scratchpad/istc-project"
+      ],
+      "port": 4599
+    },
+    {
+      "name": "istc-smm",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4601",
+        "--directory",
+        "/private/tmp/claude-501/-Users-shyngysnarseyit-Desktop-Projects-istc/98b91961-189b-4178-95c7-2a11403407d3/scratchpad/istc-smm"
+      ],
+      "port": 4601
+    },
+    {
+      "name": "kaztour-smm",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4602",
+        "--directory",
+        "/private/tmp/claude-501/-Users-shyngysnarseyit-Desktop-Projects-istc/98b91961-189b-4178-95c7-2a11403407d3/scratchpad/kaztour-smm"
+      ],
+      "port": 4602
+    },
+    {
+      "name": "kaztour-deep",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": [
+        "-m",
+        "http.server",
+        "4603",
+        "--directory",
+        "/private/tmp/claude-501/-Users-shyngysnarseyit-Desktop-Projects-istc/98b91961-189b-4178-95c7-2a11403407d3/scratchpad/kaztour-deep"
+      ],
+      "port": 4603
+    }
+  ]
+}
