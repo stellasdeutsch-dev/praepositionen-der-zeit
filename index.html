@@ -383,19 +383,47 @@ tr:last-child td{border-bottom:0}
 .btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .fineprint{margin-top:14px;font-size:11.5px;color:rgba(255,255,255,.42);letter-spacing:.03em}
 
-/* reviews */
-.revs{display:flex;gap:12px;overflow-x:auto;padding:4px 4px 16px;margin-top:24px;scroll-snap-type:x mandatory;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none}
-.revs::-webkit-scrollbar{display:none}
-.rev{flex:0 0 82%;max-width:340px;scroll-snap-align:center;background:rgba(255,255,255,.055);
-  border:1px solid var(--lineD);border-radius:18px;padding:18px;backdrop-filter:blur(10px)}
-@media(min-width:760px){.rev{flex:0 0 340px}}
-.rev .q{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.86)}
-.rev .who{margin-top:14px;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;
-  letter-spacing:.08em;text-transform:uppercase;color:var(--o2)}
-.rev .who i{width:26px;height:26px;border-radius:50%;background:rgba(255,106,0,.16);display:grid;place-content:center;
-  font-style:normal;font-family:var(--head);font-size:11px;color:var(--o);flex:none}
-.stars5{color:var(--o);font-size:13px;letter-spacing:2px;margin-bottom:9px}
+/* horizontal scroller shared by shots + reviews */
+.hscroll{display:flex;align-items:flex-start;gap:12px;overflow-x:auto;padding:4px 4px 16px;margin-top:24px;
+  scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.hscroll::-webkit-scrollbar{display:none}
+
+/* platform screenshots */
+.shot{flex:0 0 86%;max-width:420px;scroll-snap-align:center;background:rgba(255,255,255,.05);
+  border:1px solid var(--lineD);border-radius:16px;overflow:hidden;cursor:zoom-in;transition:.22s}
+@media(min-width:760px){.shot{flex:0 0 420px}.shot:hover{border-color:rgba(255,106,0,.5);transform:translateY(-3px)}}
+.shot .bar{display:flex;align-items:center;gap:5px;padding:9px 12px;background:rgba(255,255,255,.05);
+  border-bottom:1px solid var(--lineD)}
+.shot .bar i{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.22)}
+.shot img{width:100%;height:auto;display:block;background:#fff}
+.shot .cap{padding:13px 15px;font-size:13.5px;color:rgba(255,255,255,.72);line-height:1.4}
+.shot .cap b{display:block;color:#fff;font-size:14.5px;margin-bottom:3px}
+
+/* review screenshots — колоночная стена, высоты разные */
+.revwall{columns:1;column-gap:12px;margin-top:24px}
+@media(min-width:640px){.revwall{columns:2}}
+@media(min-width:1000px){.revwall{columns:3;column-gap:16px}}
+.rev{break-inside:avoid;-webkit-column-break-inside:avoid;margin-bottom:12px;width:100%;
+  background:rgba(255,255,255,.05);border:1px solid var(--lineD);border-radius:16px;overflow:hidden;
+  cursor:zoom-in;transition:.22s}
+@media(min-width:760px){.rev:hover{border-color:rgba(255,106,0,.5)}}
+.rev img{width:100%;height:auto;display:block}
+.rev .rtag{padding:12px 15px;display:flex;align-items:center;gap:9px;border-top:1px solid var(--lineD)}
+.rev .rtag .st{color:var(--o);font-size:12px;letter-spacing:1.5px;flex:none}
+.rev .rtag span{font-size:11.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+
+/* lightbox */
+.lb{position:fixed;inset:0;z-index:200;background:rgba(4,10,20,.94);backdrop-filter:blur(10px);
+  display:none;align-items:center;justify-content:center;padding:52px 14px;cursor:zoom-out}
+.lb.on{display:flex;animation:pop .25s}
+.lb img{max-width:100%;max-height:100%;object-fit:contain;border-radius:12px;box-shadow:0 30px 80px -20px #000}
+.lb .x{position:absolute;top:12px;right:12px;width:42px;height:42px;border-radius:50%;
+  background:rgba(255,255,255,.12);color:#fff;font-size:22px;display:grid;place-content:center;cursor:pointer}
+.lb .nav{position:absolute;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;
+  background:rgba(255,255,255,.12);color:#fff;font-size:20px;display:grid;place-content:center;cursor:pointer}
+.lb .prev{left:10px}.lb .next{right:10px}
+.lb .cnt{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:12px;font-weight:700;
+  color:rgba(255,255,255,.55);letter-spacing:.08em}
 
 /* inline native strip */
 .strip{background:linear-gradient(140deg,rgba(255,106,0,.12),rgba(255,106,0,.03));
@@ -773,6 +801,11 @@ footer b{color:var(--o)}
       <div class="feat rv"><div class="fi">06</div><b>Фильмы, книги, подкасты</b><p>Уже отсортированы по уровню. Не надо гуглить, что смотреть на A2 и что читать на B1.</p></div>
     </div>
 
+    <p class="eyebrow o rv" style="margin-top:44px">Как это выглядит</p>
+    <h3 class="rv" style="margin-top:8px;font-size:clamp(20px,5.4vw,30px)">Скриншоты платформы</h3>
+    <div class="hscroll" id="shots"></div>
+    <p class="hint" style="margin-top:-6px">← листай · тапни, чтобы увеличить →</p>
+
     <div class="pricecard rv">
       <div class="lvl">Полный доступ · A0 → C1</div>
       <div class="pricerow"><span class="now">€30</span><span class="old">€40</span></div>
@@ -800,8 +833,8 @@ footer b{color:var(--o)}
   <div class="wrap" style="position:relative">
     <p class="eyebrow o rv">Кто уже дошёл</p>
     <h2 class="rv" style="margin-top:10px">Отзывы<br>учеников</h2>
-    <div class="revs" id="revs"></div>
-    <p class="hint">← листай отзывы вбок →</p>
+    <p class="rv" style="margin-top:14px;color:rgba(255,255,255,.6);font-size:15.5px">Скриншоты из переписок как есть, без правок. Тапни, чтобы прочитать целиком.</p>
+    <div class="revwall" id="revs"></div>
   </div>
 </section>
 
@@ -950,23 +983,73 @@ var TABLE = [
   ['Ø','Akkusativ','регулярность, этот/прошлый','<b>jeden Tag</b>, <b>nächste Woche</b>']
 ];
 
-/* ---------- REVIEWS (реальные отзывы учеников, Telegram) ---------- */
-var REVS = [
-  {t:'Начинал с уровня A2, и нужно было как можно скорее подтянуться до B2. С помощью вашего курса смог это сделать. Все задания очень понятны и полезны, нет ничего лишнего. Навигация по сайту тоже удобная.',w:'A2 → B2',i:'B2'},
-  {t:'Кажется, только благодаря твоим объяснениям мудрёной немецкой грамматики получилось сдать этот тест. Спасибо за платформу, материалы и объясняшки для чайников!',w:'Сдал(а) DTZ B1',i:'B1'},
-  {t:'Вчера сдала экзамен по немецкому B1. Спасибо за Ваш труд, с Вами приятно и легко заниматься немецким.',w:'Сдала B1',i:'B1'},
-  {t:'Я учила немецкий сама, но в какой-то момент запуталась в источниках информации, что тормозило процесс. Удобно, что на платформе описаны темы по грамматике и подобраны упражнения и видео. Она всегда под рукой — даже при наличии 5 минут остаётся полезным помощником.',w:'Учит самостоятельно',i:'★'},
-  {t:'Особенно нравится подборка ресурсов для каждого уровня. Книги, мультфильмы, подкасты, советы по поиску. Хорошо объясняется грамматика и много примеров применения в жизни. Можно выбрать желаемый уровень и изучать в любое время.',w:'Самостоятельное изучение',i:'★'},
-  {t:'Моё самостоятельное изучение немецкого ускорилось в разы, я нахожу ответы на все интересующие меня вопросы, потому что материал размещён структурированно. И ещё огромный плюс — очень доступная цена за такой объём материала.',w:'Об объёме и цене',i:'€'},
-  {t:'Отдельное спасибо за чек-листы, в которых можно отслеживать прогресс по темам, и за персональный словарь с системой регулярных повторений. Именно то, что я искала.',w:'О трекере и словаре',i:'★'},
-  {t:'Увлечение и энтузиазм автора очень затягивает. Чувствуется, что человек любит своё дело и привержен ему. За такой кладезь знаний не жалко заплатить, эта инвестиция окупается сполна.',w:'Об авторе',i:'★'},
-  {t:'Я занимаюсь в спикинг-клубе и материалы беру с платформы: очень много нужной лексики и, что самое важное, всё чётко распределено по темам. Очень довольна, что всё могу найти на одной платформе.',w:'Спикинг-клуб',i:'★'},
-  {t:'Всё чётко, понятно и структурировано. Особенно нравится, как материалы разбиты по уровням — сразу видно, с чего начинать и куда двигаться дальше. Очень удобно учиться в Notion.',w:'О структуре',i:'★'}
+/* ---------- PLATFORM SCREENSHOTS ---------- */
+var SHOTS = [
+  {s:'assets/platform/p1-home.jpg',t:'Главная A0–A1–A2',d:'Навигация, заметки, подборка ресурсов и бонусы — всё на одном экране Notion.'},
+  {s:'assets/platform/p2-guides.jpg',t:'Список гайдов',d:'Грамматика разложена по темам: глаголы, падежи, времена, порядок слов.'},
+  {s:'assets/platform/p3-guide.jpg',t:'Разбор темы',d:'Объяснение, видео и упражнения с ответами внутри одного гайда.'},
+  {s:'assets/platform/p4-words.jpg',t:'Словарь с озвучкой',d:'Карточки с переводом и кнопкой Hören — слушаешь произношение каждого слова.'},
+  {s:'assets/platform/p5-builder.jpg',t:'Конструктор фраз',d:'Собираешь предложение — приложение подсвечивает ошибку и озвучивает результат.'},
+  {s:'assets/platform/p6-tracker.jpg',t:'Трекер привычек',d:'Чтение, слушание, разговор и письмо — со стриками и статистикой по дням.'},
+  {s:'assets/platform/p7-work.jpg',t:'Работа в Германии',d:'От поиска работы и резюме до больничных, конфликтов и смены работы.'},
+  {s:'assets/platform/p8-situations.jpg',t:'Лексика по ситуациям',d:'Ресторан, больница, транспорт, университет — слова там, где они нужны.'}
 ];
-document.getElementById('revs').innerHTML = REVS.map(function(r){
-  return '<div class="rev"><div class="stars5">★★★★★</div><div class="q">«'+r.t+'»</div>'+
-         '<div class="who"><i>'+r.i+'</i><span>'+r.w+'</span></div></div>';
+document.getElementById('shots').innerHTML = SHOTS.map(function(s,i){
+  return '<figure class="shot" data-g="shots" data-i="'+i+'">'+
+    '<div class="bar"><i></i><i></i><i></i></div>'+
+    '<img src="'+s.s+'" alt="Платформа Stellas — '+s.t+'" loading="lazy" decoding="async">'+
+    '<figcaption class="cap"><b>'+s.t+'</b>'+s.d+'</figcaption></figure>';
 }).join('');
+
+/* ---------- REVIEWS (реальные скриншоты переписок) ---------- */
+var SHOTREVS = [
+  {s:'assets/reviews/r1.jpg',w:'О структуре и цене',a:'Отзыв: платформа удобная и понятная, уроки хорошо структурированы'},
+  {s:'assets/reviews/r2.jpg',w:'О разговорной речи',a:'Отзыв: перепробовала много ресурсов, помогла платформа Stellas'},
+  {s:'assets/reviews/r3.jpg',w:'Купила год назад',a:'Отзыв: платформа очень помогла в изучении языка'},
+  {s:'assets/reviews/r4.jpg',w:'О разделе с видео',a:'Отзыв: всё структурировано, ярко и понятно'},
+  {s:'assets/reviews/r5.jpg',w:'Об авторе и методике',a:'Отзыв: скорость, результат и удовольствие от занятий'},
+  {s:'assets/reviews/r6.jpg',w:'Учила немецкий сама',a:'Отзыв: платформа всегда под рукой и помогает даже за 5 минут'},
+  {s:'assets/reviews/r7-cert.jpg',w:'Сдан DTZ · уровень B1',a:'Сертификат Deutsch-Test für Zuwanderer, результат B1'}
+];
+document.getElementById('revs').innerHTML = SHOTREVS.map(function(r,i){
+  return '<figure class="rev" data-g="revs" data-i="'+i+'">'+
+    '<img src="'+r.s+'" alt="'+r.a+'" loading="lazy" decoding="async">'+
+    '<figcaption class="rtag"><span class="st">★★★★★</span><span>'+r.w+'</span></figcaption></figure>';
+}).join('');
+
+/* ---------- LIGHTBOX ---------- */
+(function(){
+  var lb=document.createElement('div');
+  lb.className='lb';
+  lb.innerHTML='<img alt=""><div class="x">✕</div><div class="nav prev">‹</div><div class="nav next">›</div><div class="cnt"></div>';
+  document.body.appendChild(lb);
+  var img=lb.querySelector('img'),cnt=lb.querySelector('.cnt'),group=[],idx=0;
+
+  function open(g,i){
+    group=[].map.call(document.querySelectorAll('[data-g="'+g+'"] img'),function(e){return {src:e.src,alt:e.alt};});
+    idx=i;show();lb.classList.add('on');document.body.style.overflow='hidden';
+  }
+  function show(){img.src=group[idx].src;img.alt=group[idx].alt;cnt.textContent=(idx+1)+' / '+group.length;}
+  function close(){lb.classList.remove('on');document.body.style.overflow='';img.src='';}
+  function step(d){idx=(idx+d+group.length)%group.length;show();}
+
+  document.addEventListener('click',function(e){
+    var f=e.target.closest('[data-g]');
+    if(f){open(f.dataset.g,+f.dataset.i);}
+  });
+  lb.addEventListener('click',function(e){
+    if(e.target.classList.contains('next')){e.stopPropagation();step(1);}
+    else if(e.target.classList.contains('prev')){e.stopPropagation();step(-1);}
+    else close();
+  });
+  document.addEventListener('keydown',function(e){
+    if(!lb.classList.contains('on'))return;
+    if(e.key==='Escape')close();
+    else if(e.key==='ArrowRight')step(1);
+    else if(e.key==='ArrowLeft')step(-1);
+  });
+})();
+
 
 /* ---------- BUILD: marquee ---------- */
 function mq(el,items){
