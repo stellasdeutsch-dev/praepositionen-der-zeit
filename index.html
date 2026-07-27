@@ -339,6 +339,74 @@ tr:last-child td{border-bottom:0}
 .summitp{max-width:520px;margin:18px auto 0;color:rgba(255,255,255,.62);font-size:16px;line-height:1.6}
 .coda{font-family:var(--head);text-transform:uppercase;color:var(--o);font-size:clamp(20px,5.4vw,30px);margin-top:26px;line-height:1.05}
 
+/* ============ OFFER ============ */
+.offer{background:linear-gradient(180deg,#0A1E3A 0%,#0B2036 38%,#0A1622 100%);color:#fff;position:relative;overflow:hidden}
+.offer::before{content:'';position:absolute;top:-140px;left:50%;transform:translateX(-50%);width:520px;height:420px;
+  background:radial-gradient(closest-side,rgba(255,106,0,.30),transparent);pointer-events:none}
+.offer.norays::before{display:none}
+.offer.norays{padding-top:56px}
+.offer h2,.offer h3{color:#fff}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px;margin-top:26px}
+@media(min-width:760px){.stats{grid-template-columns:repeat(4,1fr);gap:16px}}
+.stat{background:rgba(255,255,255,.055);border:1px solid var(--lineD);border-radius:14px;padding:15px;text-align:center}
+.stat b{display:block;font-family:var(--head);font-size:clamp(24px,7vw,34px);color:var(--o);line-height:1}
+.stat span{display:block;margin-top:6px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(255,255,255,.55)}
+
+.feats{display:grid;gap:11px;margin-top:26px}
+@media(min-width:760px){.feats{grid-template-columns:repeat(3,1fr);gap:16px}}
+.feat{background:rgba(255,255,255,.05);border:1px solid var(--lineD);border-radius:16px;padding:18px;backdrop-filter:blur(10px)}
+.feat .fi{width:34px;height:34px;border-radius:10px;background:rgba(255,106,0,.16);color:var(--o);display:grid;place-content:center;
+  font-family:var(--head);font-size:14px;margin-bottom:11px}
+.feat b{display:block;font-size:15.5px;color:#fff;margin-bottom:5px}
+.feat p{font-size:13.5px;color:rgba(255,255,255,.62);line-height:1.5}
+
+.pricecard{margin-top:28px;background:linear-gradient(160deg,rgba(255,106,0,.14),rgba(255,255,255,.05));
+  border:1px solid rgba(255,106,0,.42);border-radius:24px;padding:26px 22px;text-align:center;
+  box-shadow:0 30px 70px -40px rgba(255,106,0,.8)}
+.pricecard .lvl{font-size:11px;font-weight:800;letter-spacing:.16em;text-transform:uppercase;color:var(--o2)}
+.pricerow{display:flex;align-items:baseline;justify-content:center;gap:12px;margin-top:10px}
+.pricerow .now{font-family:var(--head);font-size:clamp(52px,16vw,80px);line-height:.9;color:#fff}
+.pricerow .old{font-family:var(--head);font-size:clamp(22px,6vw,32px);color:rgba(255,255,255,.32);text-decoration:line-through}
+.pricecard .once{margin-top:8px;font-size:14px;color:rgba(255,255,255,.72)}
+.pricecard .once b{color:#fff}
+.plist{margin-top:18px;display:grid;gap:8px;text-align:left;max-width:420px;margin-inline:auto}
+.plist li{list-style:none;display:flex;gap:10px;font-size:14px;color:rgba(255,255,255,.8);line-height:1.45}
+.plist li::before{content:'✓';color:var(--o);font-weight:900;flex:none}
+.btns{display:grid;gap:10px;margin-top:22px;max-width:420px;margin-inline:auto}
+.btn{display:flex;align-items:center;justify-content:center;gap:9px;padding:17px 22px;border-radius:99px;
+  font-weight:900;font-size:15px;text-transform:uppercase;letter-spacing:.03em;transition:.22s;text-align:center}
+.btn.pri{background:var(--o);color:#fff;box-shadow:0 14px 32px -12px rgba(255,106,0,.9);position:relative;overflow:hidden}
+.btn.pri::after{content:'';position:absolute;top:0;left:-120%;width:60%;height:100%;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.4),transparent);animation:sheen 3.6s infinite}
+.btn.sec{background:rgba(255,255,255,.08);border:1px solid var(--lineD);color:#fff}
+.btn:active{transform:scale(.97)}
+.btnrow{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.fineprint{margin-top:14px;font-size:11.5px;color:rgba(255,255,255,.42);letter-spacing:.03em}
+
+/* reviews */
+.revs{display:flex;gap:12px;overflow-x:auto;padding:4px 4px 16px;margin-top:24px;scroll-snap-type:x mandatory;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.revs::-webkit-scrollbar{display:none}
+.rev{flex:0 0 82%;max-width:340px;scroll-snap-align:center;background:rgba(255,255,255,.055);
+  border:1px solid var(--lineD);border-radius:18px;padding:18px;backdrop-filter:blur(10px)}
+@media(min-width:760px){.rev{flex:0 0 340px}}
+.rev .q{font-size:14.5px;line-height:1.55;color:rgba(255,255,255,.86)}
+.rev .who{margin-top:14px;display:flex;align-items:center;gap:9px;font-size:11px;font-weight:800;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--o2)}
+.rev .who i{width:26px;height:26px;border-radius:50%;background:rgba(255,106,0,.16);display:grid;place-content:center;
+  font-style:normal;font-family:var(--head);font-size:11px;color:var(--o);flex:none}
+.stars5{color:var(--o);font-size:13px;letter-spacing:2px;margin-bottom:9px}
+
+/* inline native strip */
+.strip{background:linear-gradient(140deg,rgba(255,106,0,.12),rgba(255,106,0,.03));
+  border:1px dashed rgba(255,106,0,.45);border-radius:var(--r);padding:20px;margin-top:30px}
+.strip b{display:block;font-family:var(--head);text-transform:uppercase;font-size:clamp(17px,4.4vw,22px);
+  color:var(--ink);line-height:1.05;margin-bottom:8px}
+.strip p{font-size:14.5px;color:var(--ink2);line-height:1.5}
+.strip a{display:inline-flex;align-items:center;gap:7px;margin-top:14px;background:var(--o);color:#fff;
+  font-weight:800;font-size:13.5px;padding:12px 20px;border-radius:99px;transition:.2s}
+.strip a:active{transform:scale(.97)}
+
 /* ============ FOOTER ============ */
 footer{background:#040B18;color:rgba(255,255,255,.4);padding-block:38px;text-align:center;font-size:12.5px}
 footer .chips{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:18px}
@@ -632,6 +700,12 @@ footer b{color:var(--o)}
     <h2 class="rv" style="margin-top:10px">Трещины<br>на леднике</h2>
     <p class="rv" style="margin-top:14px;color:var(--ink2);max-width:560px;font-size:15.5px">Семь мест, где проваливаются все. Провалиться один раз — нормально. Провалиться на экзамене — обидно.</p>
     <div style="margin-top:28px" id="crevs"></div>
+
+    <div class="strip rv">
+      <b>Таких разборов у нас 310</b>
+      <p>Этот гайд — один из платформы Stellas: немецкий от A0 до C1, с видео, упражнениями и ИИ-собеседником. Разовая оплата €30, доступ навсегда.</p>
+      <a href="#platform">Посмотреть, что внутри →</a>
+    </div>
   </div>
 </section>
 
@@ -671,6 +745,66 @@ footer b{color:var(--o)}
   </svg>
 </section>
 
+<!-- ============ OFFER ============ -->
+<section class="offer pad" id="platform">
+  <div class="wrap" style="position:relative">
+    <p class="eyebrow o rv">Следующая гора</p>
+    <h2 class="rv" style="margin-top:10px">Это была<br>одна тема.<br>А их — <span class="o">310+</span></h2>
+
+    <div class="story rv" style="margin-top:24px">
+      <p>Всё, что ты сейчас пролистал, — <b style="color:#fff">один гайд</b>. Один из трёхсот десяти.</p>
+      <p>Остальные лежат на платформе Stellas. Там немецкий от A0 до C1 разложен по полкам: грамматика, лексика, реальные фразы. К каждой теме — видео, упражнения с разбором ответов и ИИ, с которым можно говорить, когда стесняешься говорить с людьми.</p>
+      <p class="kick">Платформа собрана в Notion. Открыл и пошёл учиться.</p>
+    </div>
+
+    <div class="stats">
+      <div class="stat rv"><b>310+</b><span>гайдов A0–C1</span></div>
+      <div class="stat rv"><b>2500+</b><span>слов с озвучкой</span></div>
+      <div class="stat rv"><b>100+</b><span>студентов клубов</span></div>
+      <div class="stat rv"><b>∞</b><span>доступ навсегда</span></div>
+    </div>
+
+    <div class="feats">
+      <div class="feat rv"><div class="fi">01</div><b>Грамматика с разбором</b><p>310+ гайдов: объяснение, видео, упражнения. К каждому ответу — почему именно так, а не «правильно/неправильно».</p></div>
+      <div class="feat rv"><div class="fi">02</div><b>2500+ слов на слух</b><p>Озвучка носителями, транскрипция с ударениями, цвет рода. Слова разбиты по ситуациям, а не по алфавиту.</p></div>
+      <div class="feat rv"><div class="fi">03</div><b>ИИ-собеседник</b><p>Выбираешь характер — строгий, дружелюбный, сложный — и говоришь по-немецки. Без преподавателя и без страха.</p></div>
+      <div class="feat rv"><div class="fi">04</div><b>Реальные ситуации</b><p>Врач, JobCenter, банк, собеседование, конфликт с коллегой. То, что нужно в жизни, а не в методичке.</p></div>
+      <div class="feat rv"><div class="fi">05</div><b>Экзамены</b><p>Goethe, telc, DTZ, ÖSD, TestDaF. Отдельный блок по каждому + ИИ-тренажёр письменной части A2–C1.</p></div>
+      <div class="feat rv"><div class="fi">06</div><b>Фильмы, книги, подкасты</b><p>Уже отсортированы по уровню. Не надо гуглить, что смотреть на A2 и что читать на B1.</p></div>
+    </div>
+
+    <div class="pricecard rv">
+      <div class="lvl">Полный доступ · A0 → C1</div>
+      <div class="pricerow"><span class="now">€30</span><span class="old">€40</span></div>
+      <div class="once">Разовая оплата. Без подписок. <b>Доступ навсегда.</b></div>
+      <ul class="plist">
+        <li>Обе платформы: A0–A2 и B1–C1</li>
+        <li>Все будущие обновления — бесплатно</li>
+        <li>Работает офлайн с телефона и ноутбука</li>
+        <li>Платформа A0–A2 на украинском — в подарок</li>
+      </ul>
+      <div class="btns">
+        <a class="btn pri" href="https://app.lava.top/801303618?tabId=products&amp;sort=published" target="_blank" rel="noopener">Забрать за €30</a>
+        <div class="btnrow">
+          <a class="btn sec" href="https://wa.me/message/D4YYEMPLIMNLA1" target="_blank" rel="noopener">WhatsApp</a>
+          <a class="btn sec" href="https://t.me/stellasdeutsch" target="_blank" rel="noopener">Telegram</a>
+        </div>
+      </div>
+      <div class="fineprint">Отдельно A0–A2 или B1–C1 — по €20. Вопросы — в личку @stellasdeutsch</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="offer norays" style="background:#0A1622;padding-bottom:64px">
+  <div class="wrap" style="position:relative">
+    <p class="eyebrow o rv">Кто уже дошёл</p>
+    <h2 class="rv" style="margin-top:10px">Отзывы<br>учеников</h2>
+    <div class="revs" id="revs"></div>
+    <p class="hint">← листай отзывы вбок →</p>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div class="chips" id="chips"></div>
@@ -678,6 +812,7 @@ footer b{color:var(--o)}
     <div class="fname">Stellas Deutsch <b>2026</b></div>
     <p>Präpositionen der Zeit · <b>A1–B1</b> — сделано для тех, кто устал от таблиц</p>
     <p style="margin-top:8px;opacity:.6">Стоишь на дне · заходишь в месяц · попадаешь в час</p>
+    <p style="margin-top:14px"><a href="#platform" style="color:var(--o);font-weight:700">Платформа A0–C1 за €30</a> · <a href="https://t.me/stellasdeutsch" target="_blank" rel="noopener" style="color:rgba(255,255,255,.7)">@stellasdeutsch</a></p>
   </div>
 </footer>
 
@@ -814,6 +949,24 @@ var TABLE = [
   ['innerhalb','Genitiv','в пределах срока','<b>innerhalb einer Woche</b>'],
   ['Ø','Akkusativ','регулярность, этот/прошлый','<b>jeden Tag</b>, <b>nächste Woche</b>']
 ];
+
+/* ---------- REVIEWS (реальные отзывы учеников, Telegram) ---------- */
+var REVS = [
+  {t:'Начинал с уровня A2, и нужно было как можно скорее подтянуться до B2. С помощью вашего курса смог это сделать. Все задания очень понятны и полезны, нет ничего лишнего. Навигация по сайту тоже удобная.',w:'A2 → B2',i:'B2'},
+  {t:'Кажется, только благодаря твоим объяснениям мудрёной немецкой грамматики получилось сдать этот тест. Спасибо за платформу, материалы и объясняшки для чайников!',w:'Сдал(а) DTZ B1',i:'B1'},
+  {t:'Вчера сдала экзамен по немецкому B1. Спасибо за Ваш труд, с Вами приятно и легко заниматься немецким.',w:'Сдала B1',i:'B1'},
+  {t:'Я учила немецкий сама, но в какой-то момент запуталась в источниках информации, что тормозило процесс. Удобно, что на платформе описаны темы по грамматике и подобраны упражнения и видео. Она всегда под рукой — даже при наличии 5 минут остаётся полезным помощником.',w:'Учит самостоятельно',i:'★'},
+  {t:'Особенно нравится подборка ресурсов для каждого уровня. Книги, мультфильмы, подкасты, советы по поиску. Хорошо объясняется грамматика и много примеров применения в жизни. Можно выбрать желаемый уровень и изучать в любое время.',w:'Самостоятельное изучение',i:'★'},
+  {t:'Моё самостоятельное изучение немецкого ускорилось в разы, я нахожу ответы на все интересующие меня вопросы, потому что материал размещён структурированно. И ещё огромный плюс — очень доступная цена за такой объём материала.',w:'Об объёме и цене',i:'€'},
+  {t:'Отдельное спасибо за чек-листы, в которых можно отслеживать прогресс по темам, и за персональный словарь с системой регулярных повторений. Именно то, что я искала.',w:'О трекере и словаре',i:'★'},
+  {t:'Увлечение и энтузиазм автора очень затягивает. Чувствуется, что человек любит своё дело и привержен ему. За такой кладезь знаний не жалко заплатить, эта инвестиция окупается сполна.',w:'Об авторе',i:'★'},
+  {t:'Я занимаюсь в спикинг-клубе и материалы беру с платформы: очень много нужной лексики и, что самое важное, всё чётко распределено по темам. Очень довольна, что всё могу найти на одной платформе.',w:'Спикинг-клуб',i:'★'},
+  {t:'Всё чётко, понятно и структурировано. Особенно нравится, как материалы разбиты по уровням — сразу видно, с чего начинать и куда двигаться дальше. Очень удобно учиться в Notion.',w:'О структуре',i:'★'}
+];
+document.getElementById('revs').innerHTML = REVS.map(function(r){
+  return '<div class="rev"><div class="stars5">★★★★★</div><div class="q">«'+r.t+'»</div>'+
+         '<div class="who"><i>'+r.i+'</i><span>'+r.w+'</span></div></div>';
+}).join('');
 
 /* ---------- BUILD: marquee ---------- */
 function mq(el,items){
